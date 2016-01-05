@@ -60,7 +60,7 @@ if(isset($_POST['submitlog'])) {
 <div class="container">
 <div id="login-form">
   <div class="modalclosebtn">X</div>
-  <div class="title">PIstorage .login</div>
+  <div class="title">Login</div>
   <form method="post" action="index.php">
   <div class="formlabel">Username</div>
   <div class="input"><input type="text" name="username" placeholder="Enter your username"></div>

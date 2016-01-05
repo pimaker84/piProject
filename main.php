@@ -55,25 +55,26 @@ if(!isset($_SESSION['username']))
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><div class="items"><span class="fa fa-database"></span> Storage</div></a></li>  
-        <li><a href="#"><div class="items"><span class="fa fa-envelope"></span> Messages</div></a></li>
+          <li><a href="main.php?tab=storage"><div class="items"><span class="fa fa-database"></span> Storage</div></a></li>  
+          <li><a href="main.php?tab=messages"><div class="items"><span class="fa fa-envelope"></span> Messages</div></a></li>
         <li><a href="logout.php"><div class="items"><span class="fa fa-sign-out"></span> Logout</div></a></li>
         
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div><!-- navbar-collapse -->
+  </div><!-- container-fluid -->
 </nav>
 
 <div class="icon_bar">
-<span class="fa fa-linkedin"></span>
-<span class="fa fa-twitter"></span>
-<span class="fa fa-facebook"></span>
+<span class="fa fa-envelope-o"></span>
+<span class="fa fa-files-o"></span>
+<span class="fa fa-user-plus"></span>
 </div>
 
 </header>
 
 <div class="container-fluid">
   <div class="row">
+      <!--
     <div class="sidebar">
       <div class="section_heading">Private Storage</div>
       <a href="main.php?tab=internal"><div class="items active"><span class="fa fa-floppy-o"></span>Internal Storage</div></a>
@@ -82,31 +83,45 @@ if(!isset($_SESSION['username']))
       <a href="#"><div class="items"><span class="fa fa-users"></span>Users</div></a>
       <a href="#"><div class="items"><span class="fa fa-dropbox"></span>Files</div></a>
       <a href="#"><div class="items"><span class="fa fa-cloud"></span>Drive</div></a>
-    </div>
+    </div>-->
+      
+<?php
+   
+    $sidebar = $_GET['tab'];
+    
+    if($sidebar == 'storage'){
+        
+        include 'contents/storage_nav.php';
+    }
+    elseif($sidebar == 'messages'){
+        
+        include 'contents/message_nav.php';
+        
+    }  else {
+
+       include 'contents/storage_nav.php';
+    }
+  
+
+
+?>
     
 <div class="content">
     <div class="handler">
-      
+
 <?php
- if(isset($_GET['tab'])){
-       
-        $page = $_GET['tab'];
+
+    $maincontent = $_GET['id'];
+    
+    if($maincontent == 'storage'){
         
-        if($page == 'storage'){
-           
-            include 'tabs/storage_management.php';
-                          
-        }  
-        if($page == 'layout'){
-            include 'tabs/layout.php';
-        }
-    }else{
+    }  else {
+        include 'contents/upload.php';
         include 'contents/storage_content.php';
+        
     }
 
-
-
-?>       
+?>    
  
        
                                
